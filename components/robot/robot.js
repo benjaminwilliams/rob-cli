@@ -5,7 +5,7 @@ const robot = function(){
 
 robot.prototype.init = () => {
   this.isPlaced = false;
-  this.currentPos = [0,0,'N'];
+  this.currentPos = [0,0,'NORTH'];
 };
 
 // Report the current Position of the Robot
@@ -19,13 +19,14 @@ robot.prototype.report = () => {
 };
 // Place the robot, note this can be done even if the robot is already placed
 robot.prototype.place = (x,y,f) =>{
+  f = f.toUpperCase(); // start by making direction all uppercase
   if(movement.moveIsValid(x,y) && movement.directionIsValid(f)){
     this.currentPos = [x,y,f];
     this.isPlaced = true;
     return `Rob has been placed at ${x},${y},${f}`;
   }
   else if(movement.moveIsValid(x,y)){
-    return 'Invalid direction';
+    return 'Invalid direction, use NORTH, EAST, SOUTH or WEST';
   }
   else{
     return 'Invalid location';
@@ -62,17 +63,17 @@ robot.prototype.right = () => {
 
   let newDirection = "";
   switch(current){
-    case "N":
-      newDirection = "E";
+    case "NORTH":
+      newDirection = "EAST";
       break;
-    case "E":
-      newDirection = "S";
+    case "EAST":
+      newDirection = "SOUTH";
       break;
-    case "S":
-      newDirection = "W";
+    case "SOUTH":
+      newDirection = "WEST";
       break;
-    case "W":
-      newDirection = "N";
+    case "WEST":
+      newDirection = "NORTH";
       break;
     default:
   }
@@ -90,17 +91,17 @@ robot.prototype.left = () => {
 
   let newDirection = "";
   switch(current){
-    case "N":
-      newDirection = "W";
+    case "NORTH":
+      newDirection = "WEST";
       break;
-    case "E":
-      newDirection = "N";
+    case "EAST":
+      newDirection = "NORTH";
       break;
-    case "S":
-      newDirection = "E";
+    case "SOUTH":
+      newDirection = "EAST";
       break;
-    case "W":
-      newDirection = "S";
+    case "WEST":
+      newDirection = "SOUTH";
       break;
     default:
   }

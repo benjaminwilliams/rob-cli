@@ -3,7 +3,7 @@
 const movement = {
   directionIsValid: function(f){
     const dir = f.toUpperCase();
-    return (dir === "N" || dir === "E" || dir === "S" || dir === "W");
+    return (dir === "NORTH" || dir === "EAST" || dir === "SOUTH" || dir === "WEST");
   },
   moveIsValid: function(x,y) {
     return x >= 0 && x < 5 && y >= 0 && y < 5;
@@ -14,16 +14,16 @@ const movement = {
     const f = currentPos[2];
     let newPos;
     switch (f) {
-      case "N":
+      case "NORTH":
         y = y + 1;
         break;
-      case "E":
+      case "EAST":
         x = x + 1;
         break;
-      case "S":
+      case "SOUTH":
         y = y - 1;
         break;
-      case "W":
+      case "WEST":
         x = x - 1;
         break;
       default:
