@@ -9,7 +9,6 @@
   "author": "Ben Williams",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.9.0",
     "vorpal": "^1.12.0"
   },
   "devDependencies": {
