@@ -22,6 +22,7 @@ describe('robot', () => {
     expect(robot.place(0,0,"INVALID")).toEqual('Invalid direction, use NORTH, EAST, SOUTH or WEST');
     expect(robot.report()).toEqual('Rob is not placed on the board');
   });
+
   it('robot can move after being placed', () => {
     robot.init();
     robot.place(0,0,'NORTH');
