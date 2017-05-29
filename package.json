@@ -1,0 +1,15 @@
+{
+  "name": "rob-cli",
+  "version": "0.0.1",
+  "description": "Toy Robot challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Williams",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "vorpal": "^1.12.0"
+  }
+}
