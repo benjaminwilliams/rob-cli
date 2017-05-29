@@ -13,7 +13,23 @@ exports.init = function(){
     .command('PLACE [x],[y],[f]', 'Places Rob onto the board, use the syntax PLACE X Y F')
     .alias('place')
     .action(function(args, callback){
-      this.log(robot.place(args.x, args.y, args.f));
+      let x;
+      let y;
+      let f;
+      if(args.x.length > 2){
+        // Splits the first argument into the correct values if no space between the commas
+        const argArray = args.x.split(",");
+        x = argArray[0];
+        y = argArray[1];
+        f = argArray[2];
+      }
+      else {
+        // remove the comma if needed, otherwise just pass throgh the value
+        x = args.x.toString().substr(-1) === "," ? args.x.substring(0, args.x.length - 1) : args.x; // remove comma if added
+        y = args.y.toString().substr(-1) === "," ? args.y.substring(0, args.y.length - 1) : args.y; // remove comma if added
+        f = args.f;
+      }
+      this.log(robot.place(x, y, f));
       callback();
     });
   vorpal
