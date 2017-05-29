@@ -6,7 +6,6 @@ const robot = function(){
 };
 
 robot.prototype.init = function(){
-  this.name = "rob";
 };
 
 // Report the current Position of the Robot
@@ -38,4 +37,51 @@ robot.prototype.move = () => {
   this.currentPos = movement.moveRobot(this.currentPos);
 };
 
+// Turns the robot to the right
+robot.prototype.right = () => {
+
+  const current = this.currentPos[2];
+
+  let newDirection = "";
+  switch(current){
+    case "N":
+      newDirection = "E";
+      break;
+    case "E":
+      newDirection = "S";
+      break;
+    case "S":
+      newDirection = "W";
+      break;
+    case "W":
+      newDirection = "N";
+      break;
+    default:
+  }
+  this.currentPos[2] =  newDirection;
+};
+
+// Turns the robot to the left
+robot.prototype.left = () => {
+
+  const current = this.currentPos[2];
+
+  let newDirection = "";
+  switch(current){
+    case "N":
+      newDirection = "W";
+      break;
+    case "E":
+      newDirection = "N";
+      break;
+    case "S":
+      newDirection = "E";
+      break;
+    case "W":
+      newDirection = "S";
+      break;
+    default:
+  }
+  this.currentPos[2] =  newDirection;
+};
 module.exports = new robot();
