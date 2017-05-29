@@ -20,10 +20,13 @@ robot.prototype.report = () => {
 
 // Place the robot, note this can be done even if the robot is already placed
 robot.prototype.place = (x,y,f) =>{
-  if(movement.moveIsValid(x,y)){
+  if(movement.moveIsValid(x,y) && movement.directionIsValid(f)){
     this.currentPos = [x,y,f];
     this.isPlaced = true;
     return `Rob has been placed at ${x},${y},${f}`;
+  }
+  else if(movement.moveIsValid(x,y)){
+    return 'Invalid direction';
   }
   else{
     return 'Invalid location';
@@ -31,10 +34,17 @@ robot.prototype.place = (x,y,f) =>{
 };
 
 robot.prototype.move = () => {
+  const oldPos = this.currentPos;
+
   //the movement component deals with the logic,
   // it will return either the new position or the old position, so we can just
   // assign whatever is returned to this.currentPos
   this.currentPos = movement.moveRobot(this.currentPos);
+
+  // provide feeback to the user if Rob can not move
+  if(oldPos === this.currentPos){
+    return 'Can not move Rob';
+  }
 };
 
 // Turns the robot to the right

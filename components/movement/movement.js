@@ -1,6 +1,10 @@
 
 
 const movement = {
+  directionIsValid: function(f){
+    const dir = f.toUpperCase();
+    return (dir === "N" || dir === "E" || dir === "S" || dir === "W");
+  },
   moveIsValid: function(x,y) {
     return x >= 0 && x < 5 && y >= 0 && y < 5;
   },

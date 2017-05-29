@@ -10,7 +10,7 @@ exports.init = function(){
       callback();
     });
   vorpal
-    .command('PLACE [x],[y],[f]', 'Places Rob onto the board')
+    .command('PLACE [x],[y],[f]', 'Places Rob onto the board, use the syntax PLACE X Y F')
     .alias('place')
     .action(function(args, callback){
       this.log(robot.place(args.x, args.y, args.f));
