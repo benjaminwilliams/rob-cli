@@ -1,11 +1,11 @@
 const movement = require('../movement/movement');
 
 const robot = function(){
-  this.isPlaced = false;
-  this.currentPos = [0,0,'N'];
 };
 
-robot.prototype.init = function(){
+robot.prototype.init = () => {
+  this.isPlaced = false;
+  this.currentPos = [0,0,'N'];
 };
 
 // Report the current Position of the Robot
@@ -17,7 +17,6 @@ robot.prototype.report = () => {
     return "Rob is not placed on the board";
   }
 };
-
 // Place the robot, note this can be done even if the robot is already placed
 robot.prototype.place = (x,y,f) =>{
   if(movement.moveIsValid(x,y) && movement.directionIsValid(f)){
@@ -34,6 +33,11 @@ robot.prototype.place = (x,y,f) =>{
 };
 
 robot.prototype.move = () => {
+
+  if(!this.isPlaced){
+    return 'Rob has not been placed on the board';
+  }
+
   const oldPos = this.currentPos;
 
   //the movement component deals with the logic,
@@ -49,6 +53,10 @@ robot.prototype.move = () => {
 
 // Turns the robot to the right
 robot.prototype.right = () => {
+
+  if(!this.isPlaced){
+    return 'Rob has not been placed on the board';
+  }
 
   const current = this.currentPos[2];
 
@@ -74,6 +82,10 @@ robot.prototype.right = () => {
 // Turns the robot to the left
 robot.prototype.left = () => {
 
+  if(!this.isPlaced){
+    return 'Rob has not been placed on the board';
+  }
+
   const current = this.currentPos[2];
 
   let newDirection = "";
@@ -94,4 +106,5 @@ robot.prototype.left = () => {
   }
   this.currentPos[2] =  newDirection;
 };
+
 module.exports = new robot();
