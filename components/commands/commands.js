@@ -18,7 +18,7 @@ commands.prototype.place = (args) => {
   if(args.x.length > 2){
     // Splits the first argument into the correct values if no space between the commas
     const argArray = args.x.split(",");
-    if(argArray.length === 3) { // only return valid place if all 3 coords are filled in
+    if(argArray.length === 3 && argArray[0] && argArray[1] && argArray[2]) { // only return valid place if all 3 coords are filled in
       x = parseInt(argArray[0],10);
       y = parseInt(argArray[1],10);
       f = argArray[2];
